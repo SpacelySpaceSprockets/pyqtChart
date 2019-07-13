@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt, QPointF
 import numpy as np
 
 class MyChartView(QChartView):
-	series = None
+	line_series = None
 
 	def __init__(self, parent=None):
 		super().__init__(parent)

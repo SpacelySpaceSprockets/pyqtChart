@@ -8,21 +8,25 @@ from PyQt5.QtCore import Qt, QPointF
 import numpy as np
 
 class MyChartView(QChartView):
-	series = None
+	line_series = None
 
 	def __init__(self, parent=None):
 		super().__init__(parent)
+
+		self.setRenderHint(QPainter.Antialiasing)
 
 		self.chart = QChart()
 		self.chart.setTitle("Simple Line Chart Example")
 		self.chart.legend().hide()
 
 		self.setData() # This needs to be called before self.line_series is referenced
-		self.chart.createDefaultAxes()
 		
+		self.chart.addSeries(self.line_series)
+		self.chart.createDefaultAxes()
+
 		self.setChart(self.chart)
 
-		self.setRenderHint(QPainter.Antialiasing)
+		
 		
 	def setData(self):
 		self.line_series = QLineSeries()
@@ -35,8 +39,7 @@ class MyChartView(QChartView):
 		self.line_series.append(QPointF(11,1))
 		self.line_series.append(QPointF(13,3))
 
-		self.chart.addSeries(self.line_series)
-
+		
 
 class PlotWindow(QMainWindow):
 	def __init__(self, parent=None):
