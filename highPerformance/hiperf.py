@@ -68,8 +68,8 @@ if __name__ == '__main__':
     npoints = 1000000
     xdata = np.linspace(0., 10., npoints)
 
-    window.add_data(xdata, np.sin(xdata), color=Qt.red)
-    window.add_data(xdata, np.cos(xdata), color=Qt.blue)
+    window.add_data(xdata, np.sin(xdata))
+    window.add_data(xdata, np.cos(xdata))
 
     window.set_title("Simple example with %d curves of %d points "\
                      "(OpenGL Accelerated Series)"\
