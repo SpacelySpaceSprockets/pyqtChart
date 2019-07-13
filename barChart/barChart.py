@@ -1,11 +1,9 @@
 import sys
 
 from PyQt5.QtChart import QChart, QChartView, QBarSeries, QBarSet, QBarCategoryAxis, QValueAxis
-from PyQt5.QtGui import QPolygonF, QPainter, QColor, QPen
+from PyQt5.QtGui import  QPainter
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtCore import Qt, QPointF
-
-import numpy as np
+from PyQt5.QtCore import Qt
 
 class MyChartView(QChartView):
 	bar_series = None
@@ -18,6 +16,8 @@ class MyChartView(QChartView):
 		self.chart = QChart()
 		self.chart.setTitle("Simple Bar Chart Example")
 		self.chart.legend().show()
+		self.chart.legend().setAlignment(Qt.AlignBottom)
+		self.chart.setAnimationOptions(QChart.SeriesAnimations)
 
 		self.setData() # This needs to be called before self.bar_series is referenced
 		
